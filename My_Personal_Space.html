@@ -1,807 +1,486 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Ngọc's Personal Space</title>
-
-    <meta name="description" content="A little space about me, my interests, my experiences, and my journey of learning and growing.">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
-    <style>
-        /* ===== 1. GENERAL SETTINGS ===== */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        :root {
-            --pink: #f6dce8;
-            --lavender: #e9e1fa;
-            --mint: #dff2e8;
-            --cream: #fffaf7;
-            --dark: #393347;
-            --purple: #9478bd;
-            --text: #625b6d;
-            --white: #ffffff;
-        }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--cream);
-            color: var(--dark);
-            line-height: 1.7;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .container {
-            width: 88%;
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        .section {
-            padding: 90px 0;
-            scroll-margin-top: 80px;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 36px;
-            text-align: center;
-            margin-bottom: 12px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--text);
-            margin-bottom: 45px;
-        }
-
-        /* ===== 2. NAVIGATION BAR ===== */
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(255, 250, 247, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid #eee5ee;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 0;
-        }
-
-        .logo {
-            font-size: 21px;
-            font-weight: 800;
-            color: var(--purple);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            font-size: 13px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--purple);
-        }
-
-        /* ===== 3. HOME / HERO ===== */
-
-        .hero {
-            min-height: 620px;
-            display: flex;
-            align-items: center;
-            background:
-                radial-gradient(circle at 10% 20%, #f6dce8 0, transparent 35%),
-                radial-gradient(circle at 90% 80%, #e9e1fa 0, transparent 35%),
-                var(--cream);
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1.3fr 0.7fr;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .welcome {
-            display: inline-block;
-            background: var(--mint);
-            color: #557b68;
-            padding: 8px 17px;
-            border-radius: 30px;
-            font-size: 12px;
-            font-weight: 700;
-            margin-bottom: 22px;
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(40px, 6vw, 65px);
-            line-height: 1.15;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 span {
-            color: var(--purple);
-        }
-
-        .hero p {
-            color: var(--text);
-            max-width: 500px;
-            margin-bottom: 30px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 13px 25px;
-            background: var(--purple);
-            color: white;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            background: #78609e;
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px #9478bd40;
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--purple);
-            color: var(--purple);
-            margin-left: 10px;
-        }
-
-        .btn-outline:hover {
-            color: white;
-        }
-
-        .profile-card {
-            background: white;
-            padding: 30px;
-            border-radius: 30px;
-            text-align: center;
-            box-shadow: 0 15px 45px #66547715;
-            transform: rotate(2deg);
-            transition: 0.3s;
-        }
-
-        .profile-card:hover {
-            transform: rotate(0deg) translateY(-8px);
-        }
-
-        .avatar {
-            width: 160px;
-            height: 160px;
-            margin: auto;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--pink), var(--lavender));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 65px;
-            color: var(--purple);
-            border: 7px solid #fff7fb;
-        }
-
-        .profile-card h3 {
-            margin-top: 20px;
-            font-size: 23px;
-        }
-
-        .profile-card p {
-            margin: 5px auto 0;
-            font-size: 13px;
-        }
-
-        /* ===== 4. ABOUT ME ===== */
-
-        .about {
-            background: white;
-        }
-
-        .about-box {
-            max-width: 800px;
-            margin: auto;
-            background: #fff8fc;
-            padding: 40px;
-            border-radius: 25px;
-            border: 1px solid #f4e8f0;
-        }
-
-        .about-box p {
-            color: var(--text);
-            text-align: center;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .info-item {
-            padding: 18px;
-            background: white;
-            border-radius: 15px;
-            font-size: 14px;
-        }
-
-        .info-item strong {
-            color: var(--purple);
-            display: block;
-        }
-
-        /* ===== 5. INTERESTS ===== */
-
-        .interest-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 22px;
-        }
-
-        .interest-card {
-            padding: 30px 23px;
-            background: white;
-            border-radius: 22px;
-            text-align: center;
-            transition: 0.3s;
-            border: 1px solid #f0eaf1;
-        }
-
-        .interest-card:hover {
-            transform: translateY(-9px);
-            box-shadow: 0 12px 30px #9478bd20;
-        }
-
-        .interest-icon {
-            font-size: 35px;
-            margin-bottom: 15px;
-        }
-
-        .interest-card h3 {
-            margin-bottom: 10px;
-        }
-
-        .interest-card p {
-            color: var(--text);
-            font-size: 13px;
-        }
-
-        /* ===== 6. MY JOURNEY ===== */
-
-        .journey {
-            background: white;
-        }
-
-        .timeline {
-            max-width: 700px;
-            margin: auto;
-            border-left: 3px solid var(--lavender);
-            padding-left: 30px;
-        }
-
-        .timeline-item {
-            position: relative;
-            padding: 0 0 35px;
-        }
-
-        .timeline-item::before {
-            content: "";
-            position: absolute;
-            left: -39px;
-            top: 6px;
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background: var(--purple);
-            border: 4px solid var(--lavender);
-        }
-
-        .timeline-item h3 {
-            color: var(--purple);
-            font-size: 17px;
-        }
-
-        .timeline-item p {
-            color: var(--text);
-            font-size: 14px;
-        }
-
-        /* ===== 7. MY GOALS ===== */
-
-        .goal-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .goal-card {
-            padding: 28px;
-            border-radius: 20px;
-            background: var(--mint);
-            transition: 0.3s;
-        }
-
-        .goal-card:nth-child(2) {
-            background: var(--lavender);
-        }
-
-        .goal-card:nth-child(3) {
-            background: var(--pink);
-        }
-
-        .goal-card:nth-child(4) {
-            background: #f8edce;
-        }
-
-        .goal-card:hover {
-            transform: scale(1.03);
-        }
-
-        .goal-card h3 {
-            margin-bottom: 8px;
-        }
-
-        .goal-card p {
-            font-size: 13px;
-            color: var(--text);
-        }
-
-        /* ===== 8. CONTACT ===== */
-
-        .contact {
-            background: linear-gradient(135deg, #f6dce8, #e9e1fa);
-            text-align: center;
-        }
-
-        .contact p {
-            color: var(--text);
-            margin-bottom: 25px;
-        }
-
-        /* ===== 9. FOOTER ===== */
-
-        footer {
-            background: #393347;
-            color: white;
-            text-align: center;
-            padding: 25px;
-            font-size: 13px;
-        }
-
-        footer span {
-            color: #e9bcd4;
-        }
-
-        /* ===== 10. RESPONSIVE DESIGN ===== */
-
-        @media (max-width: 768px) {
-
-            .container {
-                width: 90%;
-            }
-
-            .nav-links {
-                gap: 10px;
-            }
-
-            .nav-links a {
-                font-size: 10px;
-            }
-
-            .logo {
-                font-size: 16px;
-            }
-
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .profile-card {
-                max-width: 300px;
-                margin: 20px auto;
-            }
-
-            .interest-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .goal-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section {
-                padding: 65px 0;
-            }
-
-            .section-title {
-                font-size: 29px;
-            }
-        }
-
-        /* Respect reduced motion preferences */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                scroll-behavior: auto !important;
-                transition: none !important;
-            }
-        }
-
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fbf8fc">
+  <meta name="description" content="The personal space and portfolio of Ngọc — a student exploring technology, creativity, and lifelong learning.">
+  <meta property="og:title" content="My Personal Space — Ngọc">
+  <meta property="og:description" content="A little space to learn, create, and grow.">
+  <meta property="og:type" content="website">
+  <title>My Personal Space — Ngọc</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #fbf8fc;
+      --surface: #ffffff;
+      --surface-soft: #f6f0fa;
+      --pink: #f4dce9;
+      --lavender: #e8e0f7;
+      --mint: #e0f0e8;
+      --butter: #f8efd8;
+      --ink: #302b3b;
+      --muted: #706979;
+      --purple: #8065a7;
+      --purple-dark: #634b88;
+      --line: #eae3ee;
+      --shadow: 0 18px 50px rgba(70, 49, 91, .09);
+      --radius: 24px;
+      --header: rgba(251, 248, 252, .86);
+    }
+    [data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #191622;
+      --surface: #242031;
+      --surface-soft: #2d263b;
+      --pink: #503548;
+      --lavender: #39304d;
+      --mint: #293e37;
+      --butter: #49402c;
+      --ink: #f4eff8;
+      --muted: #c0b7cb;
+      --purple: #c0a6e8;
+      --purple-dark: #d3bdf3;
+      --line: #3b3349;
+      --shadow: 0 18px 50px rgba(0, 0, 0, .22);
+      --header: rgba(25, 22, 34, .88);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body {
+      margin: 0; background: var(--bg); color: var(--ink);
+      font-family: "DM Sans", sans-serif; line-height: 1.7;
+      transition: background .25s ease, color .25s ease;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .container { width: min(1120px, 90%); margin-inline: auto; }
+    .skip-link {
+      position: fixed; top: 10px; left: 10px; z-index: 2000;
+      padding: 10px 14px; background: var(--surface); color: var(--ink);
+      border: 1px solid var(--line); border-radius: 10px; transform: translateY(-150%);
+    }
+    .skip-link:focus { transform: translateY(0); }
+    .progress-track { position: fixed; inset: 0 0 auto; height: 3px; z-index: 1500; }
+    .progress-bar { height: 100%; width: 0; background: linear-gradient(90deg, #d99fbe, #a38bd1); }
+    .site-header {
+      position: sticky; top: 0; z-index: 1000; background: var(--header);
+      border-bottom: 1px solid var(--line); backdrop-filter: blur(16px);
+    }
+    .nav-wrap { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-weight: 800; font-size: 1.08rem; letter-spacing: -.04em; color: var(--purple); white-space: nowrap; }
+    .brand span { color: var(--ink); }
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+    .nav-links { display: flex; align-items: center; gap: 23px; list-style: none; padding: 0; margin: 0; }
+    .nav-links a { color: var(--muted); font-size: .86rem; font-weight: 700; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--purple); }
+    .icon-btn, .menu-btn {
+      display: inline-grid; place-items: center; width: 42px; height: 42px;
+      border: 1px solid var(--line); border-radius: 50%; background: var(--surface);
+      color: var(--ink); cursor: pointer; transition: transform .2s, border-color .2s;
+    }
+    .icon-btn:hover, .menu-btn:hover { transform: translateY(-2px); border-color: var(--purple); }
+    .menu-btn { display: none; border-radius: 13px; font-size: 1.15rem; }
+    .hero {
+      position: relative; overflow: hidden; min-height: 650px; display: grid; align-items: center;
+      background:
+        radial-gradient(circle at 12% 20%, var(--pink), transparent 31%),
+        radial-gradient(circle at 88% 78%, var(--lavender), transparent 34%);
+    }
+    .hero::after {
+      content: ""; position: absolute; width: 250px; height: 250px; border: 1px solid rgba(128,101,167,.18);
+      border-radius: 50%; right: -90px; top: 70px; box-shadow: 0 0 0 28px rgba(128,101,167,.035), 0 0 0 58px rgba(128,101,167,.025);
+    }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.25fr .75fr; gap: 70px; align-items: center; padding-block: 86px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px; padding: 8px 14px;
+      background: var(--mint); color: #52745f; border-radius: 999px;
+      font-size: .76rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+    }
+    [data-theme="dark"] .eyebrow { color: #c0e3ce; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, .section-title { font-family: "Playfair Display", Georgia, serif; letter-spacing: -.035em; }
+    h1 { max-width: 720px; margin: 23px 0 18px; font-size: clamp(3rem, 6.5vw, 5.6rem); line-height: 1.06; }
+    .accent { color: var(--purple); }
+    .hero-copy { max-width: 590px; color: var(--muted); font-size: 1.08rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .btn {
+      display: inline-flex; justify-content: center; align-items: center; gap: 9px;
+      min-height: 48px; padding: 12px 21px; border: 1px solid transparent;
+      border-radius: 999px; background: var(--purple); color: white; font-weight: 800;
+      font-size: .9rem; box-shadow: 0 8px 20px rgba(128,101,167,.18);
+      transition: transform .2s, background .2s, box-shadow .2s;
+    }
+    .btn:hover { transform: translateY(-3px); background: var(--purple-dark); box-shadow: 0 12px 24px rgba(128,101,167,.22); }
+    .btn.secondary { background: var(--surface); color: var(--purple); border-color: var(--line); box-shadow: none; }
+    .btn.secondary:hover { border-color: var(--purple); }
+    .profile-wrap { display: grid; place-items: center; }
+    .profile-card {
+      width: min(100%, 330px); padding: 30px; text-align: center; background: var(--surface);
+      border: 1px solid rgba(255,255,255,.6); border-radius: 32px; box-shadow: var(--shadow);
+      transform: rotate(2deg); transition: transform .3s;
+    }
+    .profile-card:hover { transform: rotate(0) translateY(-6px); }
+    .avatar {
+      width: 174px; aspect-ratio: 1; margin: 0 auto 20px; display: grid; place-items: center;
+      border: 8px solid var(--surface-soft); border-radius: 50%;
+      background: linear-gradient(135deg, var(--pink), var(--lavender), var(--mint));
+      color: var(--purple); font: 700 5rem "Playfair Display", serif;
+    }
+    .profile-card h2 { margin-bottom: 4px; font-size: 1.5rem; }
+    .profile-card p { margin: 0; color: var(--muted); font-size: .88rem; }
+    .profile-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 7px; margin-top: 18px; }
+    .tag { padding: 6px 10px; border-radius: 999px; background: var(--surface-soft); color: var(--muted); font-size: .72rem; font-weight: 700; }
+    .section { padding: 96px 0; }
+    .section.alt { background: var(--surface); }
+    .section-heading { max-width: 650px; margin: 0 auto 48px; text-align: center; }
+    .kicker { color: var(--purple); font-size: .75rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .section-title { margin: 9px 0 12px; font-size: clamp(2.1rem, 4vw, 3.1rem); line-height: 1.15; }
+    .section-intro { color: var(--muted); margin-bottom: 0; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
+    .panel { padding: 32px; background: var(--surface-soft); border: 1px solid var(--line); border-radius: var(--radius); }
+    .panel p { color: var(--muted); }
+    .panel p:last-child { margin-bottom: 0; }
+    .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+    .fact { padding: 18px; border-radius: 17px; background: var(--surface); border: 1px solid var(--line); }
+    .fact strong { display: block; margin-bottom: 4px; color: var(--purple); font-size: .82rem; }
+    .fact span { color: var(--muted); font-size: .86rem; }
+    .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .feature-card {
+      min-height: 220px; padding: 27px; border-radius: var(--radius); background: var(--surface);
+      border: 1px solid var(--line); box-shadow: 0 8px 24px rgba(70,49,91,.035);
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+    }
+    .feature-card:hover { transform: translateY(-7px); box-shadow: var(--shadow); border-color: #cbb9df; }
+    .feature-icon { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 17px; background: var(--lavender); font-size: 1.55rem; margin-bottom: 18px; }
+    .feature-card:nth-child(2) .feature-icon { background: var(--mint); }
+    .feature-card:nth-child(3) .feature-icon { background: var(--pink); }
+    .feature-card h3 { margin-bottom: 8px; font-size: 1.08rem; }
+    .feature-card p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .timeline { max-width: 760px; margin: auto; position: relative; padding-left: 32px; }
+    .timeline::before { content: ""; position: absolute; left: 7px; top: 7px; bottom: 12px; width: 2px; background: var(--lavender); }
+    .timeline-item { position: relative; padding: 0 0 30px 18px; }
+    .timeline-item::before { content: ""; position: absolute; left: -31px; top: 7px; width: 13px; height: 13px; border-radius: 50%; background: var(--purple); border: 4px solid var(--lavender); }
+    .timeline-item .meta { color: var(--purple); font-size: .76rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .timeline-item h3 { margin: 5px 0; font-size: 1.12rem; }
+    .timeline-item p { margin: 0; color: var(--muted); }
+    .goals-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .goal { padding: 25px; border-radius: 21px; background: var(--mint); }
+    .goal:nth-child(2) { background: var(--lavender); }
+    .goal:nth-child(3) { background: var(--pink); }
+    .goal:nth-child(4) { background: var(--butter); }
+    .goal h3 { margin-bottom: 7px; font-size: 1.05rem; }
+    .goal p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .project-note { padding: 24px; margin-top: 20px; border: 1px dashed var(--purple); border-radius: 18px; color: var(--muted); text-align: center; }
+    .contact-section { background: linear-gradient(130deg, var(--pink), var(--lavender)); }
+    .contact-card { max-width: 760px; margin: auto; padding: 45px; text-align: center; background: var(--surface); border: 1px solid var(--line); border-radius: 30px; box-shadow: var(--shadow); }
+    .contact-card p { max-width: 520px; margin: 0 auto 24px; color: var(--muted); }
+    .contact-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .footer { padding: 28px 0; background: #302b3b; color: #f8f3fb; text-align: center; }
+    .footer p { margin: 3px 0; font-size: .82rem; color: #d6cede; }
+    .footer strong { color: #f0c9df; }
+    .back-top {
+      position: fixed; right: 22px; bottom: 22px; z-index: 900; width: 46px; height: 46px;
+      border: 0; border-radius: 50%; background: var(--purple); color: white; font-size: 1.1rem;
+      box-shadow: var(--shadow); cursor: pointer; opacity: 0; pointer-events: none; transform: translateY(10px);
+      transition: opacity .2s, transform .2s;
+    }
+    .back-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    :focus-visible { outline: 3px solid var(--purple); outline-offset: 3px; }
+    @media (max-width: 900px) {
+      .nav-links { gap: 13px; }
+      .nav-links a { font-size: .78rem; }
+      .hero-grid { gap: 35px; }
+    }
+    @media (max-width: 760px) {
+      html { scroll-padding-top: 76px; }
+      .nav-wrap { min-height: 68px; }
+      .menu-btn { display: inline-grid; }
+      .nav-right { gap: 9px; }
+      .nav-links {
+        display: none; position: absolute; top: calc(100% + 1px); left: 0; right: 0;
+        padding: 14px 5% 20px; background: var(--surface); border-bottom: 1px solid var(--line);
+        box-shadow: var(--shadow); flex-direction: column; align-items: stretch; gap: 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { display: block; padding: 11px 4px; font-size: .95rem; }
+      .hero { min-height: auto; }
+      .hero-grid { grid-template-columns: 1fr; text-align: center; padding-block: 70px; gap: 42px; }
+      .hero-copy { margin-inline: auto; }
+      .hero-actions { justify-content: center; }
+      .profile-card { transform: none; }
+      .section { padding: 72px 0; }
+      .about-grid { grid-template-columns: 1fr; }
+      .card-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 520px) {
+      .container { width: 88%; }
+      h1 { font-size: clamp(2.7rem, 13vw, 4rem); }
+      .card-grid, .goals-grid, .facts { grid-template-columns: 1fr; }
+      .feature-card { min-height: 0; }
+      .panel { padding: 24px; }
+      .contact-card { padding: 30px 20px; }
+      .btn { width: 100%; }
+      .back-top { right: 14px; bottom: 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
-
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
 
-    <!-- NAVIGATION -->
+  <header class="site-header">
+    <nav class="container nav-wrap" aria-label="Main navigation">
+      <a class="brand" href="#home">My Personal <span>Space.</span></a>
+      <div class="nav-right">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#interests">Interests</a></li>
+          <li><a href="#journey">Journey</a></li>
+          <li><a href="#goals">Goals</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Toggle theme">☾</button>
+        <button class="menu-btn" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">☰</button>
+      </div>
+    </nav>
+  </header>
 
-    <header>
-        <nav class="container">
-
-            <a href="#home" class="logo">
-                My Personal Space.
-            </a>
-
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#interests">Interests</a></li>
-                <li><a href="#journey">Journey</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-
-        </nav>
-    </header>
-
-
-    <!-- HOME SECTION -->
-
+  <main id="main">
     <section class="hero" id="home">
-
-        <div class="container hero-content">
-
-            <div>
-
-                <span class="welcome">
-                    ✨ WELCOME TO MY LITTLE WORLD
-                </span>
-
-                <h1>
-                    Hello, I'm <span>Ngọc!</span>
-                </h1>
-
-                <p>
-                    A little space about me, my interests,
-                    my experiences, and my journey of
-                    learning and growing.
-                </p>
-
-                <a href="#about" class="btn">
-                    Discover More →
-                </a>
-
-                <a href="#contact" class="btn btn-outline">
-                    Say Hello
-                </a>
-
-            </div>
-
-
-            <div class="profile-card">
-
-                <div class="avatar">
-                    N
-                </div>
-
-                <h3>Ngọc</h3>
-
-                <p>Student | Dreamer | Explorer 🌷</p>
-
-            </div>
-
+      <div class="container hero-grid">
+        <div class="reveal">
+          <span class="eyebrow">✦ Welcome to my little world</span>
+          <h1>Hello, I'm <span class="accent">Ngọc.</span></h1>
+          <p class="hero-copy">A university student exploring technology, creativity, and new possibilities. This is a little corner of the internet where I collect what I learn, what I create, and where I hope to go.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#about">Get to know me <span aria-hidden="true">→</span></a>
+            <a class="btn secondary" href="#contact">Let's connect</a>
+          </div>
         </div>
-
+        <div class="profile-wrap reveal">
+          <div class="profile-card">
+            <div class="avatar" role="img" aria-label="Decorative initial N">N</div>
+            <h2>Ngọc</h2>
+            <p>Student · Curious mind · Lifelong learner</p>
+            <div class="profile-tags">
+              <span class="tag">Technology</span><span class="tag">Creativity</span><span class="tag">Growth</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-
-    <!-- ABOUT ME -->
-
-    <section class="section about" id="about">
-
-        <div class="container">
-
-            <h2 class="section-title">
-                A Little About Me
-            </h2>
-
-            <p class="section-subtitle">
-                Getting to know the person behind this page.
-            </p>
-
-            <div class="about-box">
-
-                <p>
-                    Hello! I'm Ngọc, a university student
-                    who enjoys learning new things and
-                    discovering different possibilities.
-                    I am interested in technology, creativity,
-                    and personal development.
-
-                    This website is my little corner of the
-                    internet where I can share my journey,
-                    interests, and future aspirations.
-                </p>
-
-                <div class="info-grid">
-
-                    <div class="info-item">
-                        <strong>🎓 Education</strong>
-                        University Student
-                    </div>
-
-                    <div class="info-item">
-                        <strong>💻 Field of Interest</strong>
-                        Information Technology
-                    </div>
-
-                    <div class="info-item">
-                        <strong>🌱 Personality</strong>
-                        Curious & Creative
-                    </div>
-
-                    <div class="info-item">
-                        <strong>🎯 Current Focus</strong>
-                        Learning & Growing
-                    </div>
-
-                </div>
-
-            </div>
-
+    <section class="section alt" id="about">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="kicker">A little introduction</span>
+          <h2 class="section-title">A Little About Me</h2>
+          <p class="section-intro">Getting to know the person behind this page.</p>
         </div>
-
+        <div class="about-grid">
+          <article class="panel reveal">
+            <h3>Hi, nice to meet you!</h3>
+            <p>I'm Ngọc, a university student with an interest in Information Technology, especially Computer Networks and Data Communications. I enjoy learning how things work, turning ideas into practical projects, and discovering opportunities to grow.</p>
+            <p>Outside the classroom, I also value teamwork, communication, and creative activities. I built this website as a personal space to document my learning journey and share a little about the things that matter to me.</p>
+          </article>
+          <div class="facts reveal" aria-label="Quick facts">
+            <div class="fact"><strong>🎓 Education</strong><span>University student</span></div>
+            <div class="fact"><strong>💻 Study field</strong><span>Computer Networks & Data Communications</span></div>
+            <div class="fact"><strong>🌱 I value</strong><span>Curiosity, consistency, and teamwork</span></div>
+            <div class="fact"><strong>✨ Current focus</strong><span>Learning, creating, and gaining experience</span></div>
+          </div>
+        </div>
+      </div>
     </section>
-
-
-    <!-- INTERESTS -->
 
     <section class="section" id="interests">
-
-        <div class="container">
-
-            <h2 class="section-title">
-                My Interests
-            </h2>
-
-            <p class="section-subtitle">
-                A few things that make me who I am.
-            </p>
-
-            <div class="interest-grid">
-
-                <div class="interest-card">
-                    <div class="interest-icon">💻</div>
-                    <h3>Technology</h3>
-                    <p>
-                        Exploring technology, computers,
-                        programming, and digital innovation.
-                    </p>
-                </div>
-
-                <div class="interest-card">
-                    <div class="interest-icon">📚</div>
-                    <h3>Learning</h3>
-                    <p>
-                        Discovering new knowledge and
-                        improving my skills every day.
-                    </p>
-                </div>
-
-                <div class="interest-card">
-                    <div class="interest-icon">🌍</div>
-                    <h3>Exploring</h3>
-                    <p>
-                        Experiencing new places, cultures,
-                        and interesting perspectives.
-                    </p>
-                </div>
-
-            </div>
-
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="kicker">What inspires me</span>
+          <h2 class="section-title">My Interests</h2>
+          <p class="section-intro">A few things that keep me curious and motivated.</p>
         </div>
-
+        <div class="card-grid">
+          <article class="feature-card reveal"><div class="feature-icon" aria-hidden="true">💻</div><h3>Technology</h3><p>Exploring computer networks, programming, digital systems, and the technology shaping our world.</p></article>
+          <article class="feature-card reveal"><div class="feature-icon" aria-hidden="true">📚</div><h3>Learning</h3><p>Building knowledge step by step, improving my English, and developing skills for the future.</p></article>
+          <article class="feature-card reveal"><div class="feature-icon" aria-hidden="true">🌍</div><h3>Exploring</h3><p>Discovering new places, cultures, ideas, and perspectives through new experiences.</p></article>
+          <article class="feature-card reveal"><div class="feature-icon" aria-hidden="true">🤝</div><h3>Community</h3><p>Working with others, contributing to student activities, and learning through teamwork.</p></article>
+          <article class="feature-card reveal"><div class="feature-icon" aria-hidden="true">✍️</div><h3>Communication</h3><p>Sharing ideas clearly, creating content, and making complicated things easier to understand.</p></article>
+          <article class="feature-card reveal"><div class="feature-icon" aria-hidden="true">🏃</div><h3>Balance</h3><p>Making room for movement, fresh air, and small moments that help me recharge.</p></article>
+        </div>
+      </div>
     </section>
 
-
-    <!-- MY JOURNEY -->
-
-    <section class="section journey" id="journey">
-
-        <div class="container">
-
-            <h2 class="section-title">
-                My Journey
-            </h2>
-
-            <p class="section-subtitle">
-                Every step is part of my growth.
-            </p>
-
-            <div class="timeline">
-
-                <div class="timeline-item">
-
-                    <h3>My Beginning</h3>
-
-                    <p>
-                        Started my university journey and
-                        began exploring new opportunities.
-                    </p>
-
-                </div>
-
-                <div class="timeline-item">
-
-                    <h3>Learning New Skills</h3>
-
-                    <p>
-                        Exploring programming, technology,
-                        communication, and teamwork.
-                    </p>
-
-                </div>
-
-                <div class="timeline-item">
-
-                    <h3>Building My Future</h3>
-
-                    <p>
-                        Working towards my goals and
-                        discovering what I can achieve.
-                    </p>
-
-                </div>
-
-            </div>
-
+    <section class="section alt" id="journey">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="kicker">One step at a time</span>
+          <h2 class="section-title">My Journey</h2>
+          <p class="section-intro">Every experience is a chance to learn something new.</p>
         </div>
-
+        <div class="timeline">
+          <article class="timeline-item reveal"><span class="meta">The beginning</span><h3>Starting my university journey</h3><p>Beginning a new chapter, exploring my field of study, and learning to take more responsibility for my growth.</p></article>
+          <article class="timeline-item reveal"><span class="meta">Learning by doing</span><h3>Developing skills beyond the classroom</h3><p>Practising technical skills while improving communication, collaboration, and problem-solving through different activities.</p></article>
+          <article class="timeline-item reveal"><span class="meta">Community & creativity</span><h3>Taking part in student activities</h3><p>Contributing to club projects and communications, learning how ideas become plans and how teams work together.</p></article>
+          <article class="timeline-item reveal"><span class="meta">Looking ahead</span><h3>Building a meaningful future</h3><p>Continuing to explore my strengths, gain experience, and prepare for future academic and career opportunities.</p></article>
+        </div>
+      </div>
     </section>
-
-
-    <!-- MY GOALS -->
 
     <section class="section" id="goals">
-
-        <div class="container">
-
-            <h2 class="section-title">
-                My Goals
-            </h2>
-
-            <p class="section-subtitle">
-                Small steps today, bigger dreams tomorrow.
-            </p>
-
-            <div class="goal-grid">
-
-                <div class="goal-card">
-                    <h3>📖 Academic Growth</h3>
-                    <p>
-                        Strengthen my knowledge and
-                        achieve better academic results.
-                    </p>
-                </div>
-
-                <div class="goal-card">
-                    <h3>💡 Technical Skills</h3>
-                    <p>
-                        Develop my programming and
-                        problem-solving abilities.
-                    </p>
-                </div>
-
-                <div class="goal-card">
-                    <h3>🌐 Communication</h3>
-                    <p>
-                        Improve my English and
-                        communication skills.
-                    </p>
-                </div>
-
-                <div class="goal-card">
-                    <h3>🚀 Future Career</h3>
-                    <p>
-                        Gain experience and prepare
-                        for meaningful career opportunities.
-                    </p>
-                </div>
-
-            </div>
-
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="kicker">Where I'm heading</span>
+          <h2 class="section-title">My Goals</h2>
+          <p class="section-intro">Small, consistent steps can lead to meaningful progress.</p>
         </div>
-
+        <div class="goals-grid">
+          <article class="goal reveal"><h3>📖 Academic Growth</h3><p>Strengthen my foundations in computing and keep building a deeper understanding of my field.</p></article>
+          <article class="goal reveal"><h3>💡 Technical Skills</h3><p>Practise programming, networking, and problem-solving through hands-on projects and research.</p></article>
+          <article class="goal reveal"><h3>🌐 Communication</h3><p>Improve my English, presentation, and communication skills so I can share ideas with confidence.</p></article>
+          <article class="goal reveal"><h3>🎓 Future Career</h3><p>Work towards postgraduate study and explore a future in teaching and sharing knowledge about computer networks.</p></article>
+        </div>
+        <div class="project-note reveal"><strong>More coming soon.</strong> This space will grow with my projects, certificates, experiences, and milestones.</div>
+      </div>
     </section>
 
-
-    <!-- CONTACT -->
-
-    <section class="section contact" id="contact">
-
-        <div class="container">
-
-            <h2 class="section-title">
-                Let's Connect!
-            </h2>
-
-            <p>
-                Thank you for visiting my personal space.
-                Feel free to say hello!
-            </p>
-
-            <a href="#home" class="btn">
-                Back to Top ↑
-            </a>
-
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="contact-card reveal">
+          <span class="kicker">Say hello</span>
+          <h2 class="section-title">Let's Connect!</h2>
+          <p>Thank you for spending a little time in my space. I'm always happy to connect, exchange ideas, and learn from new people.</p>
+          <!-- Replace the sample email below with your real email address before publishing. -->
+          <div class="contact-actions">
+            <a class="btn" href="mailto:your.email@example.com?subject=Hello%20Ngoc">Send me an email <span aria-hidden="true">↗</span></a>
+            <button class="btn secondary" id="copyEmail" type="button" data-email="your.email@example.com">Copy email</button>
+          </div>
+          <p id="copyStatus" role="status" aria-live="polite" style="margin:14px auto 0;font-size:.82rem"></p>
         </div>
-
+      </div>
     </section>
+  </main>
 
+  <footer class="footer">
+    <div class="container">
+      <p>Made with <strong>♥</strong> by Ngọc</p>
+      <p>© <span id="year"></span> My Personal Space. All rights reserved.</p>
+    </div>
+  </footer>
 
-    <!-- FOOTER -->
+  <button class="back-top" id="backTop" type="button" aria-label="Back to top">↑</button>
 
-    <footer>
+  <script>
+    // Mobile navigation
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
 
-        <p>
-            Made with <span>♥</span> by Ngọc
-        </p>
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+      menuToggle.textContent = isOpen ? '×' : '☰';
+    });
 
-        <p>
-            © 2026 My Personal Space. All rights reserved.
-        </p>
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Open navigation menu');
+        menuToggle.textContent = '☰';
+      });
+    });
 
-    </footer>
+    // Theme toggle with local preference
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('personal-space-theme');
+    if (savedTheme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
 
+    function updateThemeButton() {
+      const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+      themeToggle.textContent = dark ? '☀' : '☾';
+      themeToggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+      themeToggle.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+    }
+    updateThemeButton();
+    themeToggle.addEventListener('click', () => {
+      const dark = document.documentElement.getAttribute('data-theme') !== 'dark';
+      if (dark) document.documentElement.setAttribute('data-theme', 'dark');
+      else document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('personal-space-theme', dark ? 'dark' : 'light');
+      updateThemeButton();
+    });
+
+    // Reading progress and back-to-top button
+    const progressBar = document.getElementById('progressBar');
+    const backTop = document.getElementById('backTop');
+    function handleScroll() {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+      progressBar.style.width = `${progress}%`;
+      backTop.classList.toggle('show', window.scrollY > 500);
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Reveal elements as they enter the viewport
+    const revealItems = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealItems.forEach(item => observer.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add('visible'));
+    }
+
+    // Highlight the current navigation section
+    const sections = document.querySelectorAll('main section[id]');
+    if ('IntersectionObserver' in window) {
+      const sectionObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            navLinks.querySelectorAll('a').forEach(a => {
+              a.classList.toggle('active', a.getAttribute('href') === `#${entry.target.id}`);
+            });
+          }
+        });
+      }, { rootMargin: '-35% 0px -55% 0px' });
+      sections.forEach(section => sectionObserver.observe(section));
+    }
+
+    // Copy contact email (replace the sample address in the button's data-email attribute)
+    document.getElementById('copyEmail').addEventListener('click', async event => {
+      const email = event.currentTarget.dataset.email;
+      const status = document.getElementById('copyStatus');
+      try {
+        await navigator.clipboard.writeText(email);
+        status.textContent = 'Email address copied.';
+      } catch {
+        status.textContent = `Please copy this address: ${email}`;
+      }
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
