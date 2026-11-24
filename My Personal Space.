@@ -1,0 +1,807 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ngọc's Personal Space</title>
+
+    <meta name="description" content="A little space about me, my interests, my experiences, and my journey of learning and growing.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== 1. GENERAL SETTINGS ===== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --pink: #f6dce8;
+            --lavender: #e9e1fa;
+            --mint: #dff2e8;
+            --cream: #fffaf7;
+            --dark: #393347;
+            --purple: #9478bd;
+            --text: #625b6d;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 88%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section {
+            padding: 90px 0;
+            scroll-margin-top: 80px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text);
+            margin-bottom: 45px;
+        }
+
+        /* ===== 2. NAVIGATION BAR ===== */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 250, 247, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #eee5ee;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: 800;
+            color: var(--purple);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--purple);
+        }
+
+        /* ===== 3. HOME / HERO ===== */
+
+        .hero {
+            min-height: 620px;
+            display: flex;
+            align-items: center;
+            background:
+                radial-gradient(circle at 10% 20%, #f6dce8 0, transparent 35%),
+                radial-gradient(circle at 90% 80%, #e9e1fa 0, transparent 35%),
+                var(--cream);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .welcome {
+            display: inline-block;
+            background: var(--mint);
+            color: #557b68;
+            padding: 8px 17px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(40px, 6vw, 65px);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--purple);
+        }
+
+        .hero p {
+            color: var(--text);
+            max-width: 500px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 25px;
+            background: var(--purple);
+            color: white;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #78609e;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px #9478bd40;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--purple);
+            color: var(--purple);
+            margin-left: 10px;
+        }
+
+        .btn-outline:hover {
+            color: white;
+        }
+
+        .profile-card {
+            background: white;
+            padding: 30px;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 15px 45px #66547715;
+            transform: rotate(2deg);
+            transition: 0.3s;
+        }
+
+        .profile-card:hover {
+            transform: rotate(0deg) translateY(-8px);
+        }
+
+        .avatar {
+            width: 160px;
+            height: 160px;
+            margin: auto;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--pink), var(--lavender));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 65px;
+            color: var(--purple);
+            border: 7px solid #fff7fb;
+        }
+
+        .profile-card h3 {
+            margin-top: 20px;
+            font-size: 23px;
+        }
+
+        .profile-card p {
+            margin: 5px auto 0;
+            font-size: 13px;
+        }
+
+        /* ===== 4. ABOUT ME ===== */
+
+        .about {
+            background: white;
+        }
+
+        .about-box {
+            max-width: 800px;
+            margin: auto;
+            background: #fff8fc;
+            padding: 40px;
+            border-radius: 25px;
+            border: 1px solid #f4e8f0;
+        }
+
+        .about-box p {
+            color: var(--text);
+            text-align: center;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .info-item {
+            padding: 18px;
+            background: white;
+            border-radius: 15px;
+            font-size: 14px;
+        }
+
+        .info-item strong {
+            color: var(--purple);
+            display: block;
+        }
+
+        /* ===== 5. INTERESTS ===== */
+
+        .interest-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .interest-card {
+            padding: 30px 23px;
+            background: white;
+            border-radius: 22px;
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid #f0eaf1;
+        }
+
+        .interest-card:hover {
+            transform: translateY(-9px);
+            box-shadow: 0 12px 30px #9478bd20;
+        }
+
+        .interest-icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .interest-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .interest-card p {
+            color: var(--text);
+            font-size: 13px;
+        }
+
+        /* ===== 6. MY JOURNEY ===== */
+
+        .journey {
+            background: white;
+        }
+
+        .timeline {
+            max-width: 700px;
+            margin: auto;
+            border-left: 3px solid var(--lavender);
+            padding-left: 30px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 0 0 35px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -39px;
+            top: 6px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--purple);
+            border: 4px solid var(--lavender);
+        }
+
+        .timeline-item h3 {
+            color: var(--purple);
+            font-size: 17px;
+        }
+
+        .timeline-item p {
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        /* ===== 7. MY GOALS ===== */
+
+        .goal-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .goal-card {
+            padding: 28px;
+            border-radius: 20px;
+            background: var(--mint);
+            transition: 0.3s;
+        }
+
+        .goal-card:nth-child(2) {
+            background: var(--lavender);
+        }
+
+        .goal-card:nth-child(3) {
+            background: var(--pink);
+        }
+
+        .goal-card:nth-child(4) {
+            background: #f8edce;
+        }
+
+        .goal-card:hover {
+            transform: scale(1.03);
+        }
+
+        .goal-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .goal-card p {
+            font-size: 13px;
+            color: var(--text);
+        }
+
+        /* ===== 8. CONTACT ===== */
+
+        .contact {
+            background: linear-gradient(135deg, #f6dce8, #e9e1fa);
+            text-align: center;
+        }
+
+        .contact p {
+            color: var(--text);
+            margin-bottom: 25px;
+        }
+
+        /* ===== 9. FOOTER ===== */
+
+        footer {
+            background: #393347;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 13px;
+        }
+
+        footer span {
+            color: #e9bcd4;
+        }
+
+        /* ===== 10. RESPONSIVE DESIGN ===== */
+
+        @media (max-width: 768px) {
+
+            .container {
+                width: 90%;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a {
+                font-size: 10px;
+            }
+
+            .logo {
+                font-size: 16px;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .profile-card {
+                max-width: 300px;
+                margin: 20px auto;
+            }
+
+            .interest-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .goal-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 65px 0;
+            }
+
+            .section-title {
+                font-size: 29px;
+            }
+        }
+
+        /* Respect reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                scroll-behavior: auto !important;
+                transition: none !important;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <header>
+        <nav class="container">
+
+            <a href="#home" class="logo">
+                My Personal Space.
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#interests">Interests</a></li>
+                <li><a href="#journey">Journey</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+
+    <!-- HOME SECTION -->
+
+    <section class="hero" id="home">
+
+        <div class="container hero-content">
+
+            <div>
+
+                <span class="welcome">
+                    ✨ WELCOME TO MY LITTLE WORLD
+                </span>
+
+                <h1>
+                    Hello, I'm <span>Ngọc!</span>
+                </h1>
+
+                <p>
+                    A little space about me, my interests,
+                    my experiences, and my journey of
+                    learning and growing.
+                </p>
+
+                <a href="#about" class="btn">
+                    Discover More →
+                </a>
+
+                <a href="#contact" class="btn btn-outline">
+                    Say Hello
+                </a>
+
+            </div>
+
+
+            <div class="profile-card">
+
+                <div class="avatar">
+                    N
+                </div>
+
+                <h3>Ngọc</h3>
+
+                <p>Student | Dreamer | Explorer 🌷</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT ME -->
+
+    <section class="section about" id="about">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                A Little About Me
+            </h2>
+
+            <p class="section-subtitle">
+                Getting to know the person behind this page.
+            </p>
+
+            <div class="about-box">
+
+                <p>
+                    Hello! I'm Ngọc, a university student
+                    who enjoys learning new things and
+                    discovering different possibilities.
+                    I am interested in technology, creativity,
+                    and personal development.
+
+                    This website is my little corner of the
+                    internet where I can share my journey,
+                    interests, and future aspirations.
+                </p>
+
+                <div class="info-grid">
+
+                    <div class="info-item">
+                        <strong>🎓 Education</strong>
+                        University Student
+                    </div>
+
+                    <div class="info-item">
+                        <strong>💻 Field of Interest</strong>
+                        Information Technology
+                    </div>
+
+                    <div class="info-item">
+                        <strong>🌱 Personality</strong>
+                        Curious & Creative
+                    </div>
+
+                    <div class="info-item">
+                        <strong>🎯 Current Focus</strong>
+                        Learning & Growing
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- INTERESTS -->
+
+    <section class="section" id="interests">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                My Interests
+            </h2>
+
+            <p class="section-subtitle">
+                A few things that make me who I am.
+            </p>
+
+            <div class="interest-grid">
+
+                <div class="interest-card">
+                    <div class="interest-icon">💻</div>
+                    <h3>Technology</h3>
+                    <p>
+                        Exploring technology, computers,
+                        programming, and digital innovation.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon">📚</div>
+                    <h3>Learning</h3>
+                    <p>
+                        Discovering new knowledge and
+                        improving my skills every day.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon">🌍</div>
+                    <h3>Exploring</h3>
+                    <p>
+                        Experiencing new places, cultures,
+                        and interesting perspectives.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MY JOURNEY -->
+
+    <section class="section journey" id="journey">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                My Journey
+            </h2>
+
+            <p class="section-subtitle">
+                Every step is part of my growth.
+            </p>
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+
+                    <h3>My Beginning</h3>
+
+                    <p>
+                        Started my university journey and
+                        began exploring new opportunities.
+                    </p>
+
+                </div>
+
+                <div class="timeline-item">
+
+                    <h3>Learning New Skills</h3>
+
+                    <p>
+                        Exploring programming, technology,
+                        communication, and teamwork.
+                    </p>
+
+                </div>
+
+                <div class="timeline-item">
+
+                    <h3>Building My Future</h3>
+
+                    <p>
+                        Working towards my goals and
+                        discovering what I can achieve.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MY GOALS -->
+
+    <section class="section" id="goals">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                My Goals
+            </h2>
+
+            <p class="section-subtitle">
+                Small steps today, bigger dreams tomorrow.
+            </p>
+
+            <div class="goal-grid">
+
+                <div class="goal-card">
+                    <h3>📖 Academic Growth</h3>
+                    <p>
+                        Strengthen my knowledge and
+                        achieve better academic results.
+                    </p>
+                </div>
+
+                <div class="goal-card">
+                    <h3>💡 Technical Skills</h3>
+                    <p>
+                        Develop my programming and
+                        problem-solving abilities.
+                    </p>
+                </div>
+
+                <div class="goal-card">
+                    <h3>🌐 Communication</h3>
+                    <p>
+                        Improve my English and
+                        communication skills.
+                    </p>
+                </div>
+
+                <div class="goal-card">
+                    <h3>🚀 Future Career</h3>
+                    <p>
+                        Gain experience and prepare
+                        for meaningful career opportunities.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section class="section contact" id="contact">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Let's Connect!
+            </h2>
+
+            <p>
+                Thank you for visiting my personal space.
+                Feel free to say hello!
+            </p>
+
+            <a href="#home" class="btn">
+                Back to Top ↑
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            Made with <span>♥</span> by Ngọc
+        </p>
+
+        <p>
+            © 2026 My Personal Space. All rights reserved.
+        </p>
+
+    </footer>
+
+</body>
+</html>
